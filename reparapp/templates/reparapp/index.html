@@ -1,17 +1,31 @@
-{% extends 'reparapp/base.html' %} 
+{% extends 'reparapp/base.html' %}
+{% load staticfiles %} 
 
-{% block content %} 
-    <h1>Últimas reparaciones</h1>
-    <a class="btn btn-default pull-right" href="{% url 'reparacion_new'%}">
-        <span class="glyphicon glyphicon-plus">Agregar Reparación</span>
-    </a>
+{% block content %}
+<h1>Últimas reparaciones</h1>
+<a class="btn btn-default pull-right" href="{% url 'reparacion_new'%}">
+    <span class="glyphicon glyphicon-plus">Agregar Reparación</span>
+</a>
+
     {% for reparacion in reparaciones %}
-        <div>
-            <h1>
-                <a href="{% url 'reparacion_detail' pk=reparacion.pk %}">{{ reparacion.equipo }}</a>
-            </h1>
-            <p>Fecha de llegada: {{ reparacion.fecha_llegada }}</p>
-            <p>Descripcion: {{ reparacion.descripcion|linebreaksbr }}</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4" style="width: 18rem; margin: 10px; ;font-size: 20px;">
+                    <div class="thumbnail" style="background-color: #356892; ">
+                        <img class="card-img-top img-thumbnail" src="{% static 'css/laptop.png' %}" style="font-size: 5px;" alt="Card image cap"
+                            style="padding: 20px">
+                        <div class="caption" style=" color: white">
+                            <h4 class="">Equipo: {{reparacion.equipo.modelo}}</h4>
+                            <p>Descripcion: {{reparacion.descripcion}}</p>
+                            <a href="" class="btn btn-default btn-xs pull-right" role="button">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </a>
+                            <a href="{% url 'reparacion_detail' pk=reparacion.pk %}" class="btn btn-warning btn-xs btn-block" role="button">VER</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     {% endfor %} 
+
 {% endblock %}

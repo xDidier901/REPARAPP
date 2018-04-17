@@ -1,16 +1,29 @@
 {% extends 'reparapp/base.html' %} 
 
-{% block content %} 
-    <h1>Equipos</h1>
-    <a class="btn btn-default pull-right" href="{% url 'equipo_new'%}">
-        <span class="glyphicon glyphicon-plus">Agregar Equipos</span>
-    </a>
+{% block content %}
+<h1>EQUIPOS</h1>
+<table class="table table-hover text-center" style="font-size: 20px;">
+    <tr class="text-center">
+        <th class="text-center">Cliente</th>
+        <th class="text-center">Marca</th>
+        <th class="text-center">Modelo</th>
+        <th class="text-center">Sistema Operativo</th>
+    </tr>
     {% for equipo in equipos %}
-        <div>
-            <h1>
-                <a href="{% url 'equipo_detail' pk=equipo.pk %}">{{ equipo }}</a>
-            </h1>
-            <p>Marca: {{ equipo.marca }}</p>
-        </div>
-    {% endfor %} 
+    <tr>
+        <td>
+            <a href="{% url 'cliente_detail' pk=equipo.cliente.pk %}">{{ equipo.cliente }}</a>
+        </td>
+        <td>{{equipo.marca}}</td>
+        <td>{{ equipo.modelo }}</td>
+        <td>{{equipo.sistema_operativo}}</td>
+        <td>
+            <a class="btn btn-default" href="{% url 'equipo_remove' pk=equipo.pk %}">
+                <span class="glyphicon glyphicon-remove">Eliminar Equipo</span>
+            </a>
+        </td>
+    </tr>
+    {%endfor%}
+
+</table>
 {% endblock %}

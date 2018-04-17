@@ -1,15 +1,32 @@
 {% extends 'reparapp/base.html' %} 
 
-{% block content %} 
-    <h1>Clientes</h1>
-    <a class="btn btn-default pull-right" href="{% url 'cliente_new'%}">
-        <span class="glyphicon glyphicon-plus">Agregar Cliente</span>
-    </a>
+{% block content %}
+<h1 class="keon">CLIENTES</h1>
+<a class="pull-right" href="{% url 'cliente_new' %}" class="top-menu">
+    <i class="fas fa-user-plus fa-3x"></i>Agregar Cliente
+</a>
+<table class="table table-hover text-center" style="font-size: 20px;">
+    <tr class="text-center">
+        <th class="text-center">Nombre</th>
+        <th class="text-center">Apellido</th>
+        <th class="text-center">Correo</th>
+        <th class="text-center">Teléfono</th>
+    </tr>
     {% for cliente in clientes %}
-        <div>
-            <h1>
-                <a href="{% url 'cliente_detail' pk=cliente.pk %}">{{ cliente }}</a>
-            </h1>
-        </div>
-    {% endfor %} 
+    <tr>
+        <td>
+            <a href="{% url 'cliente_detail' pk=cliente.pk %}">{{cliente.nombre}}</a>
+        </td>
+        <td>{{cliente.apellido}}</td>
+        <td>{{cliente.correo}}</td>
+        <td>{{cliente.telefono}}</td>
+        <td>
+            <a class="btn btn-default" href="{% url 'cliente_remove' pk=cliente.pk %}">
+                <span class="glyphicon glyphicon-remove">Eliminar Cliente</span>
+            </a>
+        </td>
+    </tr>
+    {%endfor%}
+</table>
+
 {% endblock %}
