@@ -1,0 +1,17 @@
+{% extends 'reparapp/base.html' %} 
+
+{% block content %} 
+    <h1>Últimas reparaciones</h1>
+    <a class="btn btn-default pull-right" href="{% url 'reparacion_new'%}">
+        <span class="glyphicon glyphicon-plus">Agregar Reparación</span>
+    </a>
+    {% for reparacion in reparaciones %}
+        <div>
+            <h1>
+                <a href="{% url 'reparacion_detail' pk=reparacion.pk %}">{{ reparacion.equipo }}</a>
+            </h1>
+            <p>Fecha de llegada: {{ reparacion.fecha_llegada }}</p>
+            <p>Descripcion: {{ reparacion.descripcion|linebreaksbr }}</p>
+        </div>
+    {% endfor %} 
+{% endblock %}

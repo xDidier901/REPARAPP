@@ -1,0 +1,22 @@
+{% extends 'reparapp/base.html' %} 
+
+{% block content %}
+<div>
+    <h1>Detalles de la Reparación:</h1>
+    <a class="btn btn-default pull-right" href="{% url 'reparacion_edit' pk=reparacion.pk %}">
+        <span class="glyphicon glyphicon-pencil">Editar</span>
+    </a>
+    {% if reparacion.completada %}
+        <h3 style="color:green;">Reparación completa</h3>
+    {% else %}
+        <h3 style="color:red;">Reparación incompleta</h3>
+    {% endif %}
+    <span>
+        <h1>Detalles del Cliente:</h1>
+    </span>
+    <h3>Nombre: {{reparacion.equipo.cliente.nombre}}</h3>
+    <h3>Apellido: {{reparacion.equipo.cliente.apellido}}</h3>
+    <h3>Correo: {{reparacion.equipo.cliente.correo}}</h3>
+    <h3>Telefono: {{reparacion.equipo.cliente.telefono}}</h3>
+</div>
+{% endblock %}
