@@ -14,5 +14,24 @@
         <span class="glyphicon glyphicon-remove">Borrar</span>
     </a>
 
+    <h2>Equipos del Cliente</h2>
+    <table class="table table-hover text-center" style="font-size: 20px;">
+        <tr class="text-center">
+            <th class="text-center">ID</th>
+            <th class="text-center">Sistema Operativo</th>
+            <th class="text-center">Marca</th>
+            <th class="text-center">Modelo</th>
+        </tr>
+        {% for equipo in equipos %}
+        <tr>
+            <td>
+                <a href="{% url 'equipo_detail' pk=equipo.pk %}">{{ equipo.pk }}</a>
+            </td>
+            <td>{{equipo.sistema_operativo}}</td>
+            <td>{{ equipo.marca }}</td>
+            <td>{{equipo.modelo}}</td>
+        </tr>
+        {%endfor%}
+    </table>
 </div>
 {% endblock %}

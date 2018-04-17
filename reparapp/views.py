@@ -99,7 +99,8 @@ def cliente_list(request):
 
 def cliente_detail(request, pk):
     cliente = get_object_or_404(Cliente, pk=pk)
-    return render(request, 'reparapp/cliente_detail.html', {'cliente': cliente})
+    equipos = Equipo.objects.filter(cliente_id=pk)
+    return render(request, 'reparapp/cliente_detail.html', {'cliente': cliente, 'equipos': equipos})
 
 def cliente_new(request):
     title = 'Agregar Cliente'
