@@ -1,0 +1,17 @@
+{% extends 'reparapp/base.html' %} 
+
+{% block content %}
+<div>
+    <h1>Detalles del Equipo:</h1>
+    <a class="btn btn-default pull-right" href="{% url 'equipo_edit' pk=equipo.pk %}">
+        <span class="glyphicon glyphicon-pencil">Editar</span>
+    </a>
+    <h3>Sistema Operativo: {{ equipo.sistema_operativo }}</h3>
+    <h3>Marca: {{ equipo.marca }}</h3>
+    <h3>Modelo: {{ equipo.modelo }}</h3>
+    <h3>Cliente: <a href="{% url 'cliente_detail' pk=equipo.cliente.pk %}">{{ equipo.cliente }}</a></h3>
+    <a class="btn btn-default" href="{% url 'equipo_remove' pk=equipo.pk %}">
+        <span class="glyphicon glyphicon-remove">Borrar</span>
+    </a>
+</div>
+{% endblock %}

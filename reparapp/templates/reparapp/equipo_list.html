@@ -1,0 +1,16 @@
+{% extends 'reparapp/base.html' %} 
+
+{% block content %} 
+    <h1>Equipos</h1>
+    <a class="btn btn-default pull-right" href="{% url 'equipo_new'%}">
+        <span class="glyphicon glyphicon-plus">Agregar Equipos</span>
+    </a>
+    {% for equipo in equipos %}
+        <div>
+            <h1>
+                <a href="{% url 'equipo_detail' pk=equipo.pk %}">{{ equipo }}</a>
+            </h1>
+            <p>Marca: {{ equipo.marca }}</p>
+        </div>
+    {% endfor %} 
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'reparapp/base.html' %} 
+
+{% block content %} 
+    <h1>Clientes</h1>
+    <a class="btn btn-default pull-right" href="{% url 'cliente_new'%}">
+        <span class="glyphicon glyphicon-plus">Agregar Cliente</span>
+    </a>
+    {% for cliente in clientes %}
+        <div>
+            <h1>
+                <a href="{% url 'cliente_detail' pk=cliente.pk %}">{{ cliente }}</a>
+            </h1>
+        </div>
+    {% endfor %} 
+{% endblock %}
