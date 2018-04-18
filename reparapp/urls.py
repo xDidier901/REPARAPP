@@ -1,6 +1,6 @@
 from django.urls import path, re_path, include
 from . import views
-
+from reparapp.views import ReporteReparacionesPDF
 urlpatterns = [
     path('', views.index, name='index'),
 
@@ -23,4 +23,8 @@ urlpatterns = [
     re_path(r'^cliente/new/$', views.cliente_new, name='cliente_new'),
     re_path(r'^cliente/(?P<pk>\d+)/edit/$', views.cliente_edit, name='cliente_edit'),
     re_path(r'^cliente/(?P<pk>\d+)/remove/$', views.cliente_remove, name='cliente_remove'),
+    
+    #Reportes
+    re_path(r'^reporte_reparaciones_pdf/$',ReporteReparacionesPDF.as_view(), name="reporte_reparaciones_pdf"),
 ]
+    
