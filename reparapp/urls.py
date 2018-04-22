@@ -1,6 +1,6 @@
 from django.urls import path, re_path, include
 from . import views
-from reparapp.views import ReporteReparacionesPDF
+from reparapp.views import ReporteReparacionesPDF,ReporteEquiposPDF,ReporteClientesPDF
 urlpatterns = [
     path('', views.index, name='index'),
 
@@ -26,5 +26,7 @@ urlpatterns = [
     
     #Reportes
     re_path(r'^reporte_reparaciones_pdf/$',ReporteReparacionesPDF.as_view(), name="reporte_reparaciones_pdf"),
+    re_path(r'^reporte_equipos_pdf/$',ReporteEquiposPDF.as_view(), name="reporte_equipos_pdf"),    
+    re_path(r'^reporte_clientes_pdf/$',ReporteClientesPDF.as_view(), name="reporte_clientes_pdf"),
 ]
     
