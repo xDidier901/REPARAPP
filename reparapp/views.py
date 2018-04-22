@@ -198,3 +198,117 @@ class ReporteReparacionesPDF(View):
             buffer.close()
             response.write(pdf)
             return response
+
+class ReporteEquiposPDF(View):
+
+    def cabecera(self,pdf):
+            #Utilizamos el archivo logo.png que está guardado en la carpeta media/imagenes
+            archivo_imagen = settings.MEDIA_ROOT+'/imagenes/logo.png'
+            #Definimos el tamaño de la imagen a cargar y las coordenadas correspondientes
+            pdf.drawImage(archivo_imagen, 40, 750, 120, 90,preserveAspectRatio=True)
+            #Establecemos el tamaño de letra en 16 y el tipo de letra Helvetica
+            pdf.setFont("Helvetica", 16)
+            #Dibujamos una cadena en la ubicación X,Y especificada
+            pdf.drawString(230, 790, u"        REPARAPP     ")
+            pdf.setFont("Helvetica", 14)
+            pdf.drawString(200, 770, u"REPORTE DE EQUIPOS")
+            pdf.setFont("Helvetica", 12)
+            pdf.drawString( 450, 750, u"Fecha:"+time.strftime("%d/%m/%y"))
+    def tabla(self,pdf,y):
+            #Creamos una tupla de encabezados para neustra tabla
+            encabezados = ('Marca', 'Modelo','Sistema Operativo','Cliente')
+            #Creamos una lista de tuplas que van a contener a los Equipos
+            detalles = [(equipo.marca, equipo.modelo,equipo.sistema_operativo,equipo.cliente.nombre)for equipo in Equipo.objects.order_by('sistema_operativo','marca')]
+            #Establecemos el tamaño de cada una de las columnas de la tabla
+            detalle_orden = Table([encabezados] + detalles, colWidths=[3 * cm, 4 * cm, 4 * cm, 5 * cm])
+            #Aplicamos estilos a las celdas de la tabla
+            detalle_orden.setStyle(TableStyle(
+            [
+                    #La primera fila(encabezados) va a estar centrada
+                    ('ALIGN',(0,0),(3,0),'CENTER'),
+                    #Los bordes de todas las celdas serán de color negro y con un grosor de 1
+                    ('GRID', (0, 0), (-1, -1), 1, colors.black),
+                    #El tamaño de las letras de cada una de las celdas será de 10
+                    ('FONTSIZE', (0, 0), (-1, -1), 10),
+                    ]
+            ))
+            #Establecemos el tamaño de la hoja que ocupará la tabla
+            detalle_orden.wrapOn(pdf, 800, 600)
+            #Definimos la coordenada donde se dibujará la tabla
+            detalle_orden.drawOn(pdf, 60,y)
+
+    def get(self, request, *args, **kwargs):
+            #Indicamos el tipo de contenido a devolver, en este caso un pdf
+            response = HttpResponse(content_type='application/pdf')
+            #La clase io.BytesIO permite tratar un array de bytes como un fichero binario, se utiliza como almacenamiento temporal
+            buffer = BytesIO()
+            #Canvas nos permite hacer el reporte con coordenadas X y Y
+            pdf = canvas.Canvas(buffer)
+            #Llamo al método cabecera donde están definidos los datos que aparecen en la cabecera del reporte.
+            self.cabecera(pdf)
+            y = 600
+            self.tabla(pdf, y)
+            #Con show page hacemos un corte de página para pasar a la siguiente
+            pdf.showPage()
+            pdf.save()
+            pdf = buffer.getvalue()
+            buffer.close()
+            response.write(pdf)
+            return response
+
+class ReporteClientesPDF(View):
+
+    def cabecera(self,pdf):
+            #Utilizamos el archivo logo.png que está guardado en la carpeta media/imagenes
+            archivo_imagen = settings.MEDIA_ROOT+'/imagenes/logo.png'
+            #Definimos el tamaño de la imagen a cargar y las coordenadas correspondientes
+            pdf.drawImage(archivo_imagen, 40, 750, 120, 90,preserveAspectRatio=True)
+            #Establecemos el tamaño de letra en 16 y el tipo de letra Helvetica
+            pdf.setFont("Helvetica", 16)
+            #Dibujamos una cadena en la ubicación X,Y especificada
+            pdf.drawString(230, 790, u"        REPARAPP     ")
+            pdf.setFont("Helvetica", 14)
+            pdf.drawString(200, 770, u"REPORTE DE CLIENTES")
+            pdf.setFont("Helvetica", 12)
+            pdf.drawString( 450, 750, u"Fecha:"+time.strftime("%d/%m/%y"))
+    def tabla(self,pdf,y):
+            #Creamos una tupla de encabezados para neustra tabla
+            encabezados = ('Nombre', 'Apellido','Correo','Telefono')
+            #Creamos una lista de tuplas que van a contener a los Clientes
+            detalles = [(cliente.nombre, cliente.apellido,cliente.correo,cliente.telefono)for cliente in Cliente.objects.order_by('nombre')]
+            #Establecemos el tamaño de cada una de las columnas de la tabla
+            detalle_orden = Table([encabezados] + detalles, colWidths=[4.5 * cm, 4.3 * cm, 5 * cm, 3.5 * cm])
+            #Aplicamos estilos a las celdas de la tabla
+            detalle_orden.setStyle(TableStyle(
+            [
+                    #La primera fila(encabezados) va a estar centrada
+                    ('ALIGN',(0,0),(3,0),'CENTER'),
+                    #Los bordes de todas las celdas serán de color negro y con un grosor de 1
+                    ('GRID', (0, 0), (-1, -1), 1, colors.black),
+                    #El tamaño de las letras de cada una de las celdas será de 10
+                    ('FONTSIZE', (0, 0), (-1, -1), 10),
+                    ]
+            ))
+            #Establecemos el tamaño de la hoja que ocupará la tabla
+            detalle_orden.wrapOn(pdf, 800, 600)
+            #Definimos la coordenada donde se dibujará la tabla
+            detalle_orden.drawOn(pdf, 60,y)
+
+    def get(self, request, *args, **kwargs):
+            #Indicamos el tipo de contenido a devolver, en este caso un pdf
+            response = HttpResponse(content_type='application/pdf')
+            #La clase io.BytesIO permite tratar un array de bytes como un fichero binario, se utiliza como almacenamiento temporal
+            buffer = BytesIO()
+            #Canvas nos permite hacer el reporte con coordenadas X y Y
+            pdf = canvas.Canvas(buffer)
+            #Llamo al método cabecera donde están definidos los datos que aparecen en la cabecera del reporte.
+            self.cabecera(pdf)
+            y = 600
+            self.tabla(pdf, y)
+            #Con show page hacemos un corte de página para pasar a la siguiente
+            pdf.showPage()
+            pdf.save()
+            pdf = buffer.getvalue()
+            buffer.close()
+            response.write(pdf)
+            return response

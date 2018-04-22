@@ -6,9 +6,6 @@
 <a class="btn btn-default pull-right" href="{% url 'reparacion_new'%}">
     <span class="glyphicon glyphicon-plus">Agregar Reparación</span>
 </a>
-<a class="btn btn-default" href="{% url 'reporte_reparaciones_pdf' %}" class="btn btn-info btn-block">
-    <span>Reporte</span>
-</a>
 
     {% for reparacion in reparaciones %}
         <div class="container">
