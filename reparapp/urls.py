@@ -1,9 +1,11 @@
 from django.urls import path, re_path, include
 from . import views
 from reparapp.views import ReporteReparacionesPDF,ReporteEquiposPDF,ReporteClientesPDF
+from django.contrib.auth import views as auth_views
 urlpatterns = [
-    path('', views.index, name='index'),
-
+    path('', auth_views.login, name='login'),
+    re_path(r'^index/$', views.index, name='index'),
+    re_path(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
     #Reparaciones
     re_path(r'^reparacion/(?P<pk>\d+)/$', views.reparacion_detail, name='reparacion_detail'),
     re_path(r'^reparacion/new/$', views.reparacion_new, name='reparacion_new'),

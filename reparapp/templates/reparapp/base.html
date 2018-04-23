@@ -7,6 +7,7 @@
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/reparapp.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         body>.container {
             padding-top: 60px;
@@ -33,10 +34,10 @@
 </head>
 
 <body>
-    <header>
+     <header>
         <!-- Fixed navbar -->
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="/">Reparapp</a>
+            <a class="navbar-brand" href="/index/">Reparapp</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -44,7 +45,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/">Inicio
+                        <a class="nav-link" href="/index/">Inicio
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
@@ -67,8 +68,9 @@
                       </li>
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                    <a href="{% url 'logout' %}" ><i class="material-icons" style="font-size: 45px; margin-left: 5px;" data-toggle="tooltip" title="Cerrar sesion">exit_to_app</i></a>
                 </form>
             </div>
         </nav>
@@ -78,7 +80,7 @@
         <h1>
             <a href="/">Reparapp</a>
         </h1>
-    </div>
+    </div> 
     <div class="content container">
         <div class="row">
             <div class="col-md-8">

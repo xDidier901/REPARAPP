@@ -1,0 +1,49 @@
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+  <style>
+    #loginback{
+      background-color: #30336b;
+      width: 100%;
+      color: #ffffff;
+      height: 430px;
+      margin: 0 auto;
+      overflow: hidden;
+      padding: 10px 0;
+      align-items: center;
+      justify-content: space-around;
+      display: flex;
+      float: none;
+      
+    }
+    p{
+      margin-right: 15%;
+    }
+    button{
+      margin-left: 20%;
+    }
+  </style>  
+  <title>Login</title>
+</head>
+<body>
+    <div class="container" id="loginback">
+        <div class="col-md-4 col-md-offset-4">
+          <h2>Login</h2>
+          <form method="post" class="form-group">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-light">Entrar</button>
+          </form>
+        </div>
+      
+    </div>
+    
+  </body>
+</html>
+{% endblock %}
