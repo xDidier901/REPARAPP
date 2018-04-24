@@ -3,15 +3,15 @@
 {% block content %}
 <div>
     <h1>Detalles de Cliente:</h1>
-    <a class="btn btn-default pull-right" href="{% url 'cliente_edit' pk=cliente.pk %}">
-        <span class="glyphicon glyphicon-pencil">Editar</span>
-    </a>
     <h3>Nombre: {{ cliente.nombre }}</h3>
     <h3>Apellido: {{ cliente.apellido }}</h3>
-    <h3>correo: {{ cliente.correo }}</h3>
+    <h3>Correo: {{ cliente.correo }}</h3>
     <h3>Teléfono: {{ cliente.telefono }}</h3>
-    <a class="btn btn-default" href="{% url 'cliente_remove' pk=cliente.pk %}">
-        <span class="glyphicon glyphicon-remove">Borrar</span>
+     <a class="btn btn-default pull-right" href="{% url 'cliente_edit' pk=cliente.pk %}" style="font-size: 20px">
+        <span class="glyphicon glyphicon-pencil"><img src="https://icon-icons.com/icons2/523/PNG/512/edit_icon-icons.com_52382.png" width="30" height="30"> Editar</span>
+    </a>
+    <a class="btn btn-default" href="{% url 'cliente_remove' pk=cliente.pk %}" style="font-size: 20px">
+        <span class="glyphicon glyphicon-remove"><img src="https://icon-icons.com/icons2/1154/PNG/512/1486564399-close_81512.png" width="30" height="30"> Borrar</span>
     </a>
 
     <h2>Equipos del Cliente</h2>
