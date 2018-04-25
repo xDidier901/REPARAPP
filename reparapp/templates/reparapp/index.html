@@ -2,21 +2,27 @@
 {% load staticfiles %} 
 
 {% block content %}
-<h1>Últimas reparaciones</h1>
-<a class="btn btn-default pull-right" href="{% url 'reparacion_new'%}">
-    <span class="glyphicon glyphicon-plus">Agregar Reparación</span>
+
+<h1 style="text-align: center; "> ÚLTIMAS REPARACIONES</h1>
+<a class="btn btn-default pull-right" href="{% url 'reparacion_new'%}" >
+    <span class="glyphicon glyphicon-plus" style="font-size: 25px; margin-left: 50%" > <img src="https://es.seaicons.com/wp-content/uploads/2017/02/add-1-icon.png" width="30" height="30"> Agregar Reparación</span>
 </a>
 
-    {% for reparacion in reparaciones %}
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4" style="width: 18rem; margin: 10px; ;font-size: 20px;">
+    
+        <div class="container" style="margin-left: 10%">
+            <div class="row" >
+                {% for reparacion in reparaciones %}
+                <div class="col-md-3" style="width: 18rem; margin: 5px; font-size: 20px; ">
                     <div class="thumbnail" style="background-color: #356892; ">
-                        <img class="card-img-top img-thumbnail" src="{% static 'css/laptop.png' %}" style="font-size: 5px;" alt="Card image cap"
-                            style="padding: 20px">
+                        <img class="card-img-top img-thumbnail" src="{% static 'css/laptop.png' %}" style="font-size: 5px;" alt="Card image cap" style="padding: 15px">
                         <div class="caption" style=" color: white">
                             <h4 class="">Equipo: {{reparacion.equipo.modelo}}</h4>
                             <p>Descripcion: {{reparacion.descripcion}}</p>
+                            {% if reparacion.completada %}
+                            <p>Reparación completa</p>
+                             {% else %}
+                             <p>Reparación incompleta</p>
+                            {% endif %}
                             <a href="" class="btn btn-default btn-xs pull-right" role="button">
                                 <i class="glyphicon glyphicon-edit"></i>
                             </a>
@@ -24,8 +30,8 @@
                         </div>
                     </div>
                 </div>
+                 {% endfor %} 
             </div>
         </div>
-    {% endfor %} 
-
+   
 {% endblock %}
