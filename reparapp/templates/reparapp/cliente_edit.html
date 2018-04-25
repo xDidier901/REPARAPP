@@ -1,9 +1,9 @@
 {% extends 'reparapp/base.html' %} 
 
 {% block content %}
-    <h1 class="text-primary">{{title}}</h1>
+    <h1 class="text-primary" style="text-align: center;">CLIENTES</h1>
     <form method="POST" class="post-form form-horizontal jumbotron text-center center-block">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Guardar</button>
+        <button type="submit" class="save btn btn-default"><img src="https://icon-icons.com/icons2/368/PNG/512/Save_37110.png" width="30" height="30"> Guardar</button>
     </form>
 {% endblock %}

@@ -1,11 +1,9 @@
 {% extends 'reparapp/base.html' %} 
 
 {% block content %}
-<div>
+<div style="text-align: center;">
     <h1>Detalles de la Reparación:</h1>
-    <a class="btn btn-default pull-right" href="{% url 'reparacion_edit' pk=reparacion.pk %}">
-        <span class="glyphicon glyphicon-pencil">Editar</span>
-    </a>
+  
     {% if reparacion.completada %}
         <h3 style="color:green;">Reparación completa</h3>
     {% else %}
@@ -19,6 +17,9 @@
     <h3>Nombre: <a href="{% url 'cliente_detail' pk=reparacion.equipo.cliente.pk %}">{{ reparacion.equipo.cliente }}</a></h3>
     <h3>Correo: {{reparacion.equipo.cliente.correo}}</h3>
     <h3>Telefono: {{reparacion.equipo.cliente.telefono}}</h3>
-    <a class="btn btn-default" href="{% url 'reparacion_remove' pk=reparacion.pk %}"><span class="glyphicon glyphicon-remove">Borrar</span></a>
+      <a class="btn btn-default pull-right" href="{% url 'reparacion_edit' pk=reparacion.pk %}" style="font-size: 20px">
+        <span class="glyphicon glyphicon-pencil"><img src="https://icon-icons.com/icons2/523/PNG/512/edit_icon-icons.com_52382.png" width="30" height="30"> Editar</span>
+    </a>
+    <a class="btn btn-default" href="{% url 'reparacion_remove' pk=reparacion.pk %}" style="font-size: 20px"><span class="glyphicon glyphicon-remove"><img src="https://icon-icons.com/icons2/1154/PNG/512/1486564399-close_81512.png" width="30" height="30"> Borrar</span></a>
 </div>
 {% endblock %}

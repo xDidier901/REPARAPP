@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/reparapp.css' %}">
+    <link rel="stylesheet" href="css/reparapp.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         body>.container {
@@ -37,7 +37,7 @@
      <header>
         <!-- Fixed navbar -->
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="/index/">Reparapp</a>
+            <a class="navbar-brand" href="/index/" style="font-size: 35px;" > Reparapp</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -45,31 +45,31 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/index/">Inicio
+                        <a class="nav-link" href="/index/" style="font-size: 25px;">Inicio
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'equipo_list'%}">Equipos</a>
+                        <a class="nav-link" href="{% url 'equipo_list'%}" style="font-size: 25px;">Equipos</a>
                     </li>
                     <li class="nav-item">
-                            <a class="nav-link" href="{% url 'cliente_list'%}">Clientes</a>
+                            <a class="nav-link" href="{% url 'cliente_list'%}" style="font-size: 25px;">Clientes</a>
                         </li>
                    <!-- <li class="nav-item">
                         <a class="nav-link disabled" href="#">Disabled</a>
                     </li> -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link">Reportes</a>
+                        <a class="nav-link" style="font-size: 25px;">Reportes</a>
                         <div class="dropdown-content">
-                          <a href="{% url 'reporte_reparaciones_pdf' %}" target="_blank">Reparaciones</a>
-                          <a href="{% url 'reporte_equipos_pdf' %}" target="_blank">Equipos</a>
-                          <a href="{% url 'reporte_clientes_pdf' %}" target="_blank">Clientes</a>
+                          <a href="{% url 'reporte_reparaciones_pdf' %}" target="_blank" style="font-size: 15px;" >Reparaciones</a>
+                          <a href="{% url 'reporte_equipos_pdf' %}" target="_blank" style="font-size: 15px;">Equipos</a>
+                          <a href="{% url 'reporte_clientes_pdf' %}" target="_blank" style="font-size: 15px;">Clientes</a>
                         </div>
                       </li>
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="font-size: 20px;">Buscar</button>
                     <a href="{% url 'logout' %}" ><i class="material-icons" style="font-size: 45px; margin-left: 5px;" data-toggle="tooltip" title="Cerrar sesion">exit_to_app</i></a>
                 </form>
             </div>
@@ -81,9 +81,9 @@
             <a href="/">Reparapp</a>
         </h1>
     </div> 
-    <div class="content container">
+    <div class="content container" >
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 {% block content %} {% endblock %}
             </div>
         </div>
@@ -93,6 +93,7 @@
     <footer class="footer">
         <div class="container">
             <span class="text-muted">Reparapp&reg; 2018. Todos los derechos reservados &copy;. Diseñado y creado como proyecto final de la materia "Seminario de Programación".</span>
+
         </div>
     </footer>
 

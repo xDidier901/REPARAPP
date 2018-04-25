@@ -1,17 +1,16 @@
 {% extends 'reparapp/base.html' %} 
 
 {% block content %}
-<div>
+<div style="text-align: center;">
     <h1>Detalles del Equipo:</h1>
-    <a class="btn btn-default pull-right" href="{% url 'equipo_edit' pk=equipo.pk %}">
-        <span class="glyphicon glyphicon-pencil">Editar</span>
-    </a>
     <h3>Sistema Operativo: {{ equipo.sistema_operativo }}</h3>
     <h3>Marca: {{ equipo.marca }}</h3>
     <h3>Modelo: {{ equipo.modelo }}</h3>
     <h3>Cliente: <a href="{% url 'cliente_detail' pk=equipo.cliente.pk %}">{{ equipo.cliente }}</a></h3>
-    <a class="btn btn-default" href="{% url 'equipo_remove' pk=equipo.pk %}">
-        <span class="glyphicon glyphicon-remove">Borrar</span>
+     <a class="btn btn-default pull-right" href="{% url 'equipo_edit' pk=equipo.pk %}" style="font-size: 20px>
+        <span class="glyphicon glyphicon-pencil"><img src="https://icon-icons.com/icons2/523/PNG/512/edit_icon-icons.com_52382.png" width="30" height="30"> Editar</span>
+    </a><a class="btn btn-default" href="{% url 'equipo_remove' pk=equipo.pk %}" style="font-size: 20px>
+        <span class="glyphicon glyphicon-remove"><img src="https://icon-icons.com/icons2/1154/PNG/512/1486564399-close_81512.png" width="30" height="30"> Borrar</span>
     </a>
 </div>
 {% endblock %}

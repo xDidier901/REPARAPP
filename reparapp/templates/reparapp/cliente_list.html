@@ -1,11 +1,11 @@
 {% extends 'reparapp/base.html' %} 
 
 {% block content %}
-<h1 class="keon">CLIENTES</h1>
-<a class="pull-right" href="{% url 'cliente_new' %}" class="top-menu">
-    <i class="fas fa-user-plus fa-3x"></i>Agregar Cliente
+<h1 class="keon" style="text-align: center; ">CLIENTES</h1>
+<a class="pull-right" href="{% url 'cliente_new' %}" class="top-menu" style="font-size: 20px;">
+    <i class="fas fa-user-plus fa-3x"></i> <img src="https://es.seaicons.com/wp-content/uploads/2017/02/add-1-icon.png" width="25" height="25"> Agregar Cliente
 </a>
-<table class="table table-hover text-center" style="font-size: 20px;">
+<table class="table table-hover text-center" style="font-size: 20px;  margin-top: 10px">
     <tr class="text-center">
         <th class="text-center">Nombre</th>
         <th class="text-center">Apellido</th>
@@ -22,7 +22,7 @@
         <td>{{cliente.telefono}}</td>
         <td>
             <a class="btn btn-default" href="{% url 'cliente_remove' pk=cliente.pk %}">
-                <span class="glyphicon glyphicon-remove">Eliminar Cliente</span>
+                <span class="glyphicon glyphicon-remove"><img src="https://icon-icons.com/icons2/1154/PNG/512/1486564399-close_81512.png" width="20" height="20"> Eliminar Cliente</span>
             </a>
         </td>
     </tr>
